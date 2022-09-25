@@ -1,17 +1,13 @@
 package com.example.socialmediagamer_udemy;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Matcher;
@@ -41,7 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
         mTextInputUserConfirmarPassword = findViewById(R.id.textInputConfirmPassword);
         mButtonRegister = findViewById(R.id.btnRegister);
         FirebaseApp.initializeApp(this);
-        mAuth = FirebaseAuth.getInstance();
 
         mButtonRegister.setOnClickListener(view -> register());
 
@@ -78,15 +73,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void createUser(String email, String password){
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(RegisterActivity.this, "El usuario se registro correctamente", Toast.LENGTH_LONG).show();
-                }
-                else{
-                    Toast.makeText(RegisterActivity.this, "No se logro registrar al usuario, intente nuevamente", Toast.LENGTH_LONG).show();
-                }
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                Toast.makeText(RegisterActivity.this, "El usuario se registro correctamente", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(RegisterActivity.this, "No se logro registrar al usuario, intente nuevamente", Toast.LENGTH_LONG).show();
             }
         });
     }

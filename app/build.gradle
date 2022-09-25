@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -36,9 +37,12 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'io.github.florent37:shapeofview:1.4.7'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.google.firebase:firebase-core:16.0.3'
     implementation platform('com.google.firebase:firebase-bom:30.4.1')
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.android.gms:play-services-auth:20.3.0'
+    implementation 'com.google.gms:google-services:4.3.13'
+    implementation 'com.google.firebase:firebase-analytics'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
