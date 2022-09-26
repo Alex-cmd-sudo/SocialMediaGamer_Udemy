@@ -9,6 +9,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialMediaGamer_Udemy">
         <activity
+            android:name=".CompleteProfileActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".RegisterActivity"
             android:exported="false">
             <meta-data
